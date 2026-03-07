@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.example.facerd_flutter">
+  <queries>
+      <package android:name="in.gov.uidai.facerd"/>
+  </queries>
+</manifest>
