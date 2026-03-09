@@ -34,35 +34,6 @@ Make sure your app's `environment` section is compatible with these ranges.
 
 ---
 
-## Android integration
-
-- **Minimum setup**
-
-The plugin uses a `MethodChannel` named `facerd_plugin` with an Android implementation in `FacerdFlutterPlugin`.  
-Typical integration steps:
-
-- Ensure your app is using **AndroidX** and a modern `compileSdkVersion` (e.g. 34 or higher).
-- Use the default Flutter embedding (v2) which registers the plugin automatically.
-
-- **FaceRD RD app**
-
-This plugin assumes the **FaceRD Registered Device** application is installed on the device.  
-If it isn't installed, `isFaceRDInstalled` returns `false` and `captureFace` will fail.
-
----
-
-## iOS integration
-
-The plugin defines an iOS implementation class `FacerdFlutterPlugin` which is registered automatically in a standard Flutter iOS project.
-
-General requirements:
-
-- iOS 11+ recommended.
-- Use the default Flutter iOS template with Swift.
-
-No additional Info.plist keys are required by the plugin itself, but the underlying FaceRD app may have its own requirements.
-
----
 
 ## Usage
 
@@ -157,44 +128,6 @@ Make sure the FaceRD app is installed on your test device/emulator and registere
 
 ---
 
-## API reference
-
-### `FaceRDPlugin`
-
-- **Channel**: `facerd_plugin`
-- **Methods**:
-  - `static Future<String?> captureFace(String pidOptions)`
-    - Sends `PidOptions` XML to the platform layer and returns the FaceRD response (e.g. PID XML).
-  - `static Future<bool> isFaceRDInstalled()`
-    - Returns `true` if the FaceRD app is installed, otherwise `false`.
-
-### `RDDetector`
-
-- `static Future<bool> isFaceRDInstalled()`
-  - Same as `FaceRDPlugin.isFaceRDInstalled()`.
-- `static Future<RDDeviceStatus> checkFaceRD()`
-  - Returns `RDDeviceStatus.ready` or `RDDeviceStatus.notInstalled`.
-
----
-
-## Version management / publishing
-
-- **Plugin version**: currently `0.0.1` in `pubspec.yaml`.
-- When you publish new versions:
-  - Update the `version:` field in `pubspec.yaml` following semantic versioning (`MAJOR.MINOR.PATCH`).
-  - Tag releases in your VCS (e.g. `v0.0.2`, `v0.1.0`).
-  - Update the dependency snippet in this README to the latest stable version.
-
-Apps depending on this plugin should use a **caret constraint** for automatic non-breaking updates, for example:
-
-```yaml
-dependencies:
-  facerd_flutter: ^0.1.0
-```
-
-This allows updates up to (but not including) the next major version.
-
----
 
 ## Troubleshooting
 
