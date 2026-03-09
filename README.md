@@ -47,18 +47,8 @@ import 'package:facerd_flutter/facerd_flutter.dart';
 
 You can check directly via `FaceRDPlugin`:
 
-```dart
-final installed = await FaceRDPlugin.isFaceRDInstalled();
-if (!installed) {
-  // Show message or navigate user to install FaceRD app
-}
-```
-
-Or use the higher-level `RDDetector` helper:
 
 ```dart
-import 'package:facerd_flutter/src/rd_detector.dart';
-
 final status = await RDDetector.checkFaceRD();
 switch (status) {
   case RDDeviceStatus.ready:

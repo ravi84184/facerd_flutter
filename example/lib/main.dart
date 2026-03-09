@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:facerd_flutter/facerd_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -27,25 +25,33 @@ class _HomePageState extends State<HomePage> {
   String? result;
 
   Future<void> capture() async {
-    print("isFaceRDInstalled:- ${await FaceRDPlugin.isFaceRDInstalled()}");
-    String pidOptions = '''<PidOptions ver="1.0" env="P">
-   <Opts
-      format="0"
-      pidVer="2.0"
-      timeout="10000"
-      otp=""
-      wadh=""
-   />
-   <CustOpts>
-      <Param name="txnId" value="123456789"/>
-      <Param name="language" value="en"/>
-   </CustOpts>
-</PidOptions>
-''';
+    final status = await RDDetector.checkFaceRD();
+    switch (status) {
+      case RDDeviceStatus.ready:
+        // proceed with capture
+        String pidOptions = '''<PidOptions ver="1.0" env="P">
+          <Opts
+              format="0"
+              pidVer="2.0"
+              timeout="10000"
+              otp=""
+              wadh=""
+          />
+          <CustOpts>
+              <Param name="txnId" value="123456789"/>
+              <Param name="language" value="en"/>
+          </CustOpts>
+        </PidOptions>
+        ''';
 
-    result = await FaceRDPlugin.captureFace(pidOptions);
-    setState(() {});
-    print(result);
+        result = await FaceRDPlugin.captureFace(pidOptions);
+        setState(() {});
+        print(result);
+        break;
+      case RDDeviceStatus.notInstalled:
+        // prompt user to install FaceRD
+        break;
+    }
   }
 
   @override
