@@ -45,9 +45,6 @@ import 'package:facerd_flutter/facerd_flutter.dart';
 
 ### 1. Check if FaceRD is installed
 
-You can check directly via `FaceRDPlugin`:
-
-
 ```dart
 import 'package:facerd_flutter/facerd_flutter.dart';
 
@@ -55,6 +52,7 @@ final status = await RDDetector.checkFaceRD();
 switch (status) {
   case RDDeviceStatus.ready:
     // proceed with capture
+    captureFace();
     break;
   case RDDeviceStatus.notInstalled:
     // prompt user to install FaceRD
@@ -63,8 +61,6 @@ switch (status) {
 ```
 
 ### 2. Capture face using FaceRD
-
-Use `FaceRDPlugin.captureFace` with a valid `PidOptions` XML string:
 
 ```dart
 import 'package:facerd_flutter/facerd_flutter.dart';
