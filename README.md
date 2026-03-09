@@ -49,6 +49,8 @@ You can check directly via `FaceRDPlugin`:
 
 
 ```dart
+import 'package:facerd_flutter/facerd_flutter.dart';
+
 final status = await RDDetector.checkFaceRD();
 switch (status) {
   case RDDeviceStatus.ready:
@@ -59,8 +61,6 @@ switch (status) {
     break;
 }
 ```
-
-> **Note**: `RDDetector` is a simple Dart helper around the same method channel, returning `RDDeviceStatus.ready` or `RDDeviceStatus.notInstalled`.
 
 ### 2. Capture face using FaceRD
 
