@@ -3,6 +3,8 @@
 **facerd_flutter** is a Flutter plugin that integrates with the FaceRD RD (Registered Device) face capture application.  
 It lets you:
 
+- **Status**: Beta (API may change)
+
 - **Check** whether the FaceRD RD app is installed on the device.
 - **Trigger** a face capture flow via FaceRD using XML `PidOptions`.
 
