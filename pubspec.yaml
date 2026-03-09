@@ -1,7 +1,7 @@
 name: facerd_flutter
 description: "Flutter plugin for integrating with FaceRD Registered Device face capture."
 version: 0.0.1
-homepage:
+repository: https://github.com/ravi84184/facerd_flutter
 
 environment:
   sdk: ^3.10.4
