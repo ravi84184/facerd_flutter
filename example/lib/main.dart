@@ -46,7 +46,6 @@ class _HomePageState extends State<HomePage> {
 
         result = await FaceRDPlugin.captureFace(pidOptions);
         setState(() {});
-        print(result);
         break;
       case RDDeviceStatus.notInstalled:
         // prompt user to install FaceRD
@@ -62,7 +61,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             ElevatedButton(onPressed: capture, child: Text("Capture Face")),
-            Text("${result}"),
+            Text("$result"),
           ],
         ),
       ),
